@@ -2,7 +2,13 @@
 
 import "./crops.css";
 
-import { FormEvent, useMemo, useState, useSyncExternalStore } from "react";
+import {
+  FormEvent,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import {
   CalendarDays,
   ChevronRight,
@@ -29,6 +35,64 @@ type Crop = {
 
 const STORAGE_KEY = "fasal-my-crops";
 const STORAGE_EVENT = "fasal-crops-updated";
+
+const DEMO_CROPS: Crop[] = [
+  {
+    id: "demo-maize",
+    name: "Maize",
+    variety: "DHM 117",
+    field: "Field A",
+    area: "2",
+    plantingDate: "2026-07-31",
+    harvestDate: "2026-10-15",
+    growthStage: "Vegetative",
+    irrigation: "Drip",
+  },
+  {
+    id: "demo-cotton",
+    name: "Cotton",
+    variety: "RCH 659",
+    field: "Field B",
+    area: "1.5",
+    plantingDate: "2026-07-01",
+    harvestDate: "2026-11-20",
+    growthStage: "Flowering",
+    irrigation: "Drip",
+  },
+  {
+    id: "demo-paddy",
+    name: "Paddy",
+    variety: "BPT 5204",
+    field: "Field C",
+    area: "1",
+    plantingDate: "2026-07-06",
+    harvestDate: "2026-10-20",
+    growthStage: "Vegetative",
+    irrigation: "Flood",
+  },
+  {
+    id: "demo-chilli",
+    name: "Chilli",
+    variety: "Teja",
+    field: "Field D",
+    area: "0.7",
+    plantingDate: "2026-08-21",
+    harvestDate: "2026-12-20",
+    growthStage: "Vegetative",
+    irrigation: "Drip",
+  },
+  {
+    id: "demo-groundnut",
+    name: "Groundnut",
+    variety: "Kadiri 6",
+    field: "Field E",
+    area: "1",
+    plantingDate: "2026-07-10",
+    harvestDate: "2026-10-10",
+    growthStage: "Flowering",
+    irrigation: "Rainfed",
+  },
+];
 
 const defaultForm: Omit<Crop, "id"> = {
   name: "",
@@ -98,6 +162,7 @@ function getHarvestStatus(harvestDate: string) {
   const harvest = new Date(harvestDate);
 
   const difference = harvest.getTime() - today.getTime();
+
   const days = Math.ceil(
     difference / (1000 * 60 * 60 * 24)
   );
@@ -172,6 +237,19 @@ function formatDate(date: string) {
 }
 
 export default function CropsPage() {
+  useEffect(() => {
+    const existing = window.localStorage.getItem(STORAGE_KEY);
+
+    if (!existing) {
+      window.localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(DEMO_CROPS)
+      );
+
+      window.dispatchEvent(new Event(STORAGE_EVENT));
+    }
+  }, []);
+
   const storedCrops = useSyncExternalStore(
     subscribeToCrops,
     getCropsSnapshot,
@@ -381,6 +459,7 @@ export default function CropsPage() {
 
             <div className="overview-content">
               <span>Total Farm Area</span>
+
               <strong>
                 {totalArea > 0 ? `${totalArea} ac` : "—"}
               </strong>
@@ -532,7 +611,10 @@ export default function CropsPage() {
                     <div className="growth-section">
                       <div className="growth-header">
                         <span>Growth Progress</span>
-                        <strong>{progress}%</strong>
+
+                        <strong>
+                          {progress}%
+                        </strong>
                       </div>
 
                       <div
@@ -583,9 +665,14 @@ export default function CropsPage() {
                     <button
                       type="button"
                       className="view-crop-button"
-                      onClick={() => setSelectedCrop(crop)}
+                      onClick={() =>
+                        setSelectedCrop(crop)
+                      }
                     >
-                      <span>View crop details</span>
+                      <span>
+                        View crop details
+                      </span>
+
                       <ChevronRight size={17} />
                     </button>
                   </article>
@@ -605,7 +692,9 @@ export default function CropsPage() {
               FARM INTELLIGENCE
             </p>
 
-            <h2>Connected crop information</h2>
+            <h2>
+              Connected crop information
+            </h2>
 
             <p>
               Your crop details can support personalized
@@ -637,7 +726,9 @@ export default function CropsPage() {
           <div className="crop-modal">
             <div className="modal-header">
               <div>
-                <p className="section-kicker">NEW CROP</p>
+                <p className="section-kicker">
+                  NEW CROP
+                </p>
 
                 <h2>Add Crop</h2>
 
@@ -649,7 +740,9 @@ export default function CropsPage() {
               <button
                 type="button"
                 className="modal-close-button"
-                onClick={() => setShowAddModal(false)}
+                onClick={() =>
+                  setShowAddModal(false)
+                }
                 aria-label="Close"
               >
                 <X size={20} />
@@ -789,7 +882,10 @@ export default function CropsPage() {
                     }
                   >
                     {growthStages.map((stage) => (
-                      <option key={stage} value={stage}>
+                      <option
+                        key={stage}
+                        value={stage}
+                      >
                         {stage}
                       </option>
                     ))}
@@ -812,7 +908,10 @@ export default function CropsPage() {
                     }
                   >
                     {irrigationTypes.map((type) => (
-                      <option key={type} value={type}>
+                      <option
+                        key={type}
+                        value={type}
+                      >
                         {type}
                       </option>
                     ))}
@@ -824,7 +923,9 @@ export default function CropsPage() {
                 <button
                   type="button"
                   className="secondary-modal-button"
-                  onClick={() => setShowAddModal(false)}
+                  onClick={() =>
+                    setShowAddModal(false)
+                  }
                 >
                   Cancel
                 </button>
@@ -861,14 +962,18 @@ export default function CropsPage() {
                 <h2>{selectedCrop.name}</h2>
 
                 {selectedCrop.variety && (
-                  <p>{selectedCrop.variety}</p>
+                  <p>
+                    {selectedCrop.variety}
+                  </p>
                 )}
               </div>
 
               <button
                 type="button"
                 className="modal-close-button"
-                onClick={() => setSelectedCrop(null)}
+                onClick={() =>
+                  setSelectedCrop(null)
+                }
                 aria-label="Close"
               >
                 <X size={20} />
@@ -947,7 +1052,9 @@ export default function CropsPage() {
                 type="button"
                 className="secondary-modal-button danger-button"
                 onClick={() =>
-                  handleDeleteCrop(selectedCrop.id)
+                  handleDeleteCrop(
+                    selectedCrop.id
+                  )
                 }
               >
                 <Trash2 size={16} />
@@ -957,7 +1064,9 @@ export default function CropsPage() {
               <button
                 type="button"
                 className="primary-crop-button"
-                onClick={() => setSelectedCrop(null)}
+                onClick={() =>
+                  setSelectedCrop(null)
+                }
               >
                 Done
               </button>
