@@ -1,0 +1,247 @@
+.fasal-navbar {
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+  background: rgba(255, 253, 247, 0.92);
+  border-bottom: 1px solid rgba(31, 91, 69, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.fasal-navbar-inner {
+  width: min(1280px, calc(100% - 40px));
+  min-height: 76px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.fasal-navbar-brand {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--green-dark);
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.fasal-navbar-logo-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: #fff;
+  font-size: 17px;
+  box-shadow: 0 5px 16px rgba(31, 91, 69, 0.15);
+}
+
+.fasal-navbar-logo-ai {
+  color: var(--gold);
+}
+
+.fasal-navbar-links {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.fasal-navbar-link {
+  position: relative;
+  padding: 9px 10px;
+  border-radius: 9px;
+  color: #587066;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+
+.fasal-navbar-link:hover {
+  color: var(--green);
+  background: rgba(223, 233, 216, 0.55);
+}
+
+.fasal-navbar-link.active {
+  color: var(--green);
+  background: rgba(223, 233, 216, 0.72);
+  font-weight: 800;
+}
+
+.fasal-navbar-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.fasal-navbar-scan {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 750;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.fasal-navbar-scan:hover {
+  transform: translateY(-1px);
+  background: var(--green-dark);
+}
+
+.fasal-navbar-menu-button {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: #fffdf7;
+  color: var(--green-dark);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.fasal-navbar-mobile {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .fasal-navbar-inner {
+    gap: 12px;
+  }
+
+  .fasal-navbar-links {
+    gap: 0;
+  }
+
+  .fasal-navbar-link {
+    padding: 8px 7px;
+    font-size: 11px;
+  }
+
+  .fasal-navbar-scan {
+    padding: 10px 13px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .fasal-navbar-links {
+    display: none;
+  }
+
+  .fasal-navbar-menu-button {
+    display: inline-flex;
+  }
+
+  .fasal-navbar-mobile {
+    width: min(100% - 40px, 1280px);
+    margin: 0 auto;
+    padding: 12px 0 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+    border-top: 1px solid rgba(31, 91, 69, 0.08);
+  }
+
+  .fasal-navbar-mobile-link {
+    padding: 12px 13px;
+    border-radius: 10px;
+    color: #587066;
+    background: rgba(223, 233, 216, 0.28);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 650;
+  }
+
+  .fasal-navbar-mobile-link:hover,
+  .fasal-navbar-mobile-link.active {
+    color: var(--green);
+    background: var(--green-soft);
+  }
+
+  .fasal-navbar-mobile-scan {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+    padding: 13px 15px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green);
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 750;
+  }
+}
+
+@media (max-width: 600px) {
+  .fasal-navbar-inner {
+    width: min(100% - 24px, 1280px);
+    min-height: 70px;
+  }
+
+  .fasal-navbar-brand {
+    font-size: 17px;
+  }
+
+  .fasal-navbar-logo-mark {
+    width: 31px;
+    height: 31px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+
+  .fasal-navbar-scan {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+
+  .fasal-navbar-mobile {
+    width: min(100% - 24px, 1280px);
+    grid-template-columns: 1fr;
+  }
+
+  .fasal-navbar-mobile-link {
+    font-size: 13px;
+  }
+
+  .fasal-navbar-mobile-scan {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .fasal-navbar-scan {
+    display: none;
+  }
+
+  .fasal-navbar-inner {
+    gap: 8px;
+  }
+
+  .fasal-navbar-actions {
+    margin-left: auto;
+  }
+}

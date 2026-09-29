@@ -1,0 +1,571 @@
+.weather-page {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  padding-bottom: 70px;
+}
+
+/* HERO */
+
+.weather-hero {
+  max-width: 1200px;
+  margin: 50px auto 30px;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 45px;
+  box-sizing: border-box;
+}
+
+.weather-hero-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.weather-hero h1 {
+  margin: 0;
+  max-width: 650px;
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 0.98;
+  letter-spacing: -2.5px;
+  color: var(--green-dark);
+}
+
+.weather-hero h1 span {
+  display: block;
+  color: var(--green);
+}
+
+.hero-description {
+  max-width: 600px;
+  margin: 22px 0 0;
+  color: #627268;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* LOCATION SEARCH */
+
+.location-box {
+  flex-shrink: 0;
+  width: 350px;
+  box-sizing: border-box;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(24, 53, 42, 0.06);
+}
+
+.location-box > svg {
+  flex-shrink: 0;
+  margin-left: 8px;
+  color: var(--green);
+}
+
+.location-box input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 14px;
+}
+
+.location-box input::placeholder {
+  color: #87938d;
+}
+
+.location-box button,
+.weather-error button {
+  flex-shrink: 0;
+  border: none;
+  background: var(--green);
+  color: white;
+  padding: 11px 17px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.location-box button:disabled {
+  opacity: 0.75;
+  cursor: default;
+}
+
+/* CURRENT WEATHER */
+
+.current-weather {
+  max-width: 1144px;
+  margin: 35px auto 20px;
+  padding: 35px;
+  box-sizing: border-box;
+  border-radius: 28px;
+  background: var(--green-dark);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  box-shadow: 0 20px 45px rgba(18, 59, 45, 0.18);
+}
+
+.current-main {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.weather-icon {
+  flex-shrink: 0;
+  width: 76px;
+  height: 76px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+  color: #e6d18a;
+}
+
+.current-weather-info {
+  min-width: 0;
+}
+
+.location-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 0 4px;
+  color: #b9cabe;
+  font-size: 14px;
+}
+
+.temperature {
+  font-size: 60px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+
+.condition {
+  margin: 8px 0 0;
+  color: #d8e1da;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* WEATHER RISK */
+
+.weather-risk {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  color: white;
+}
+
+.weather-risk span {
+  display: block;
+  font-size: 12px;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+
+.weather-risk strong {
+  font-size: 18px;
+}
+
+.risk-low {
+  background: rgba(116, 160, 103, 0.25);
+}
+
+.risk-moderate {
+  background: rgba(202, 169, 92, 0.3);
+}
+
+.risk-high {
+  background: rgba(190, 85, 65, 0.3);
+}
+
+/* WEATHER STATS */
+
+.weather-stats {
+  max-width: 1144px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.weather-stat {
+  min-width: 0;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.stat-icon {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 14px;
+  background: var(--green-soft);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+}
+
+.stat-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.weather-stat span {
+  display: block;
+  color: #718077;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.weather-stat strong {
+  display: block;
+  color: var(--green-dark);
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.condition-content {
+  min-width: 0;
+}
+
+.condition-stat {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* WEATHER ALERT */
+
+.risk-section {
+  max-width: 1144px;
+  margin: 35px auto 0;
+}
+
+.risk-banner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius: 22px;
+  background: var(--green-soft);
+  border: 1px solid rgba(31, 91, 69, 0.1);
+}
+
+.risk-banner-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+  color: var(--green);
+}
+
+.risk-banner-content {
+  min-width: 0;
+}
+
+.risk-banner h3 {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 19px;
+}
+
+.risk-banner p:not(.eyebrow) {
+  margin: 7px 0 0;
+  color: #65736b;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* FARM INTELLIGENCE */
+
+.farm-insights {
+  max-width: 1144px;
+  margin: 60px auto 0;
+  box-sizing: border-box;
+}
+
+.section-heading {
+  width: 100%;
+  display: block;
+  margin: 0 0 22px;
+  padding: 0;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.section-heading .eyebrow {
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 30px;
+  letter-spacing: -0.8px;
+  text-align: left;
+}
+
+.section-heading h2 span {
+  color: var(--green);
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.insight-card {
+  min-width: 0;
+  padding: 25px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  display: flex;
+  gap: 17px;
+}
+
+.insight-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: var(--green-soft);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+}
+
+.insight-card h3 {
+  margin: 2px 0 8px;
+  color: var(--green-dark);
+  font-size: 17px;
+}
+
+.insight-card p {
+  margin: 0;
+  color: #69766f;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* LOADING / ERROR */
+
+.weather-loading,
+.weather-error {
+  max-width: 1144px;
+  margin: 50px auto;
+  padding: 70px 30px;
+  box-sizing: border-box;
+  text-align: center;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+}
+
+.weather-loading {
+  color: var(--green);
+}
+
+.weather-loading p {
+  color: #68766e;
+}
+
+.weather-error {
+  color: var(--green-dark);
+}
+
+.weather-error-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.weather-error p {
+  margin: 0;
+  color: #68766e;
+}
+
+.weather-error button {
+  margin-top: 20px;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+  .weather-hero,
+  .current-weather,
+  .weather-stats,
+  .risk-section,
+  .farm-insights {
+    margin-left: 28px;
+    margin-right: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .weather-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .location-box {
+    width: 100%;
+  }
+
+  .weather-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .insight-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .current-weather {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .weather-risk {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .risk-banner {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .weather-page {
+    padding-bottom: 50px;
+  }
+
+  .weather-hero {
+    margin-top: 35px;
+    padding: 0 20px;
+  }
+
+  .weather-hero h1 {
+    font-size: 44px;
+    letter-spacing: -1.8px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .location-box {
+    width: 100%;
+  }
+
+  .current-weather,
+  .risk-section,
+  .farm-insights {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .current-weather {
+    padding: 25px;
+  }
+
+  .weather-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .temperature {
+    font-size: 50px;
+  }
+
+  .weather-stats {
+    grid-template-columns: 1fr 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .weather-stat {
+    padding: 16px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .weather-stat strong {
+    font-size: 16px;
+  }
+
+  .risk-banner {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 430px) {
+  .weather-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .location-box {
+    padding: 7px;
+  }
+
+  .location-box button {
+    padding: 10px 13px;
+  }
+}
