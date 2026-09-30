@@ -4,6 +4,8 @@
 
 > **Understand your crop. See the bigger picture.**
 
+🔗 **Live Demo:** [Open Fasal AI](https://fasal-ai-tan.vercel.app/)
+
 Fasal AI is an AI-powered agricultural intelligence platform that helps farmers understand crop health, monitor regional agricultural patterns, access weather insights, and make informed farming decisions.
 
 Instead of treating every crop observation as an isolated problem, Fasal AI transforms individual reports into structured agricultural signals and analyzes repeated observations across regions to identify emerging patterns.
